@@ -20,20 +20,25 @@ public class ProductServet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String action = request.getParameter("action");
 
-        if ("add".equals(action)) {
-            addToCart(request);
-        } else if ("remove".equals(action)) {
-            removeFromCart(request);
-        } else if ("checkout".equals(action)) {
-            bag.clear();
+        switch (action) {
+            case "add":
+                addToBag(request);
+                break;
+            case "remove":
+                removeFromBag(request);
+                break;
+            case "checkout":
+                clearBag();
+                break;
+            default:
+                request.setAttribute("error", "Ação inválida");
+                break;
         }
 
-        request.setAttribute("products", productList);
-        request.setAttribute("cart", bag);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        prepareResponse(request, response);
     }
 
-    private void addToCart(HttpServletRequest request) {
+    private void addToBag(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         for (Product p : productList) {
             if (p.getId() == id) {
@@ -43,8 +48,20 @@ public class ProductServet extends HttpServlet {
         }
     }
 
-    private void removeFromCart(HttpServletRequest request) {
+    private void removeFromBag(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         bag.removeIf(p -> p.getId() == id);
     }
+
+    private void clearBag() {
+        bag.clear();
+    }
+
+    private void prepareResponse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("products", productList);
+        request.setAttribute("bag", bag);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+
+
 }
