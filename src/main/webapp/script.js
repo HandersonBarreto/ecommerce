@@ -1,7 +1,9 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
 function changeQuantity(name, price, change) {
-    if (!cart[name]) cart[name] = { quantity: 0, price: price };
+    if (!cart[name]) {
+        cart[name] = { quantity: 0, price: price };
+    }
 
     cart[name].quantity += change;
 
@@ -10,7 +12,6 @@ function changeQuantity(name, price, change) {
     }
 
     document.getElementById(`${name}-count`).textContent = cart[name].quantity;
-
     localStorage.setItem("cart", JSON.stringify(cart));
     updateTotal();
 }

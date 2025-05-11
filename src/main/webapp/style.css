@@ -1,155 +1,61 @@
-*{
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
-body{
-    font-size: 1em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #e6e6e6;
+#main-area {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-/*
-******** Layout *************
-*/
-
-#header-area{
-    background-color: #f7b600;
-    padding: 15px;
-    text-align: center;
-}
-
-#logo-area, #menu-area{
-    padding: 10px;
-}
-
-#main-area{
-    width: 920px;
-    min-height: 76vh;
-    margin: 0 auto;
-    padding: 15px;
-}
-
-.product{
-    display: flex; align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.product img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.quantity{
+.product {
     display: flex;
     align-items: center;
-    padding: 5px;
-    margin: 5px;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
 }
 
-.quantity button{
-    background: #4CAF50;
+.product-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover
+}
+
+.product-info {
+    flex: 1;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity button {
+    background-color: green;
     color: white;
     border: none;
-    padding: 10px;
-    margin: 10px;
+    padding: 5px 10px;
     cursor: pointer;
+    font-size: 18px;
+}
+
+.cart-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
 .cart-button {
-    background: #5e5959;
-    width:200px;
+    background-color: blue;
     color: white;
-    border:none;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    display: block;
-    margin: 20px auto;
-    border-radius: 5px;
+    padding: 10px 15px;
     text-decoration: none;
-}
-
-#cart{
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-#title{
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 1.7em;
-}
-
-.total {
-    text-align: center;
-    padding: 10px;
-    font-size: 1.5em;
-    font-weight: bold; }
-
-#clearButton{
-    margin-top: 10px;
-    padding: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
 }
-
-#clearButton:hover {
-    background-color: darkred;
-}
-
-#footer{
-    background-color: #ccc;
-    clear: both;
-    text-align: center;
-    padding: 15px;
-}
-/*
-******** Formatação menu *************
-*/
-a{
-    text-decoration: none;
-}
-a:link, a:visited{
-    color: #ffffff;
-}
- a:hover{
-    text-decoration: none;
-    background-color: #099728;
-}
-#header-area a:link,#header-area a:visited{
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-}
-#header-area a:hover{
-    color: #f7b600;
-    background-color: white;
-    text-decoration: none;
-}
-/*
-******** Formatações Gerais *************
-*/
-h1{
-    color: #4e4e4e;
-    font-size: 2.5em;
-}
-h2{
-    color: #f7b600;
-}
-
-.white{
-    color: white;
-}
-
-
