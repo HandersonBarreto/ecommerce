@@ -2,30 +2,29 @@ package model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "tb_product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String description;
     private Integer stockQuantity;
-    private Double price;
-    private String imgUrl;
 
-    @OneToMany(mappedBy = "product")
-    private List<ItemCart> item = new ArrayList<>();
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
+
+    private String imgUrl;
 
     public Product() {
 
     }
 
-    public Product(Long id, String name, String description, Integer stockQuantity, Double price, String imgUrl) {
+    public Product(Long id, String name, String description, Integer stockQuantity, BigDecimal price, String imgUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,14 +49,6 @@ public class Product {
         this.name = name;
     }
 
-    public String getDeecription() {
-        return description;
-    }
-
-    public void setDeecription(String deecription) {
-        this.description = deecription;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -74,11 +65,11 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -88,13 +79,5 @@ public class Product {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
-    }
-
-    public List<ItemCart> getItem() {
-        return item;
-    }
-
-    public void setItem(List<ItemCart> item) {
-        this.item = item;
     }
 }
